@@ -1,4 +1,6 @@
 defmodule Meta8thWeb.ChatRoomChannel do
+  require Logger
+
   use Meta8thWeb, :channel
 
   alias Meta8th.Accounts
@@ -15,7 +17,8 @@ defmodule Meta8thWeb.ChatRoomChannel do
   @impl true
   def join("chat_room:signaling", %{"token" => token}, socket) do
     case Phoenix.Token.verify(socket, "user socket", token) do
-      {:error, _reason} ->
+      {:error, reason} ->
+        Logger.error("chat_room:signaling", reason: reason)
         {:error, %{reason: "unauthorized"}}
 
       {:ok, _} ->
@@ -37,7 +40,7 @@ defmodule Meta8thWeb.ChatRoomChannel do
       %{nickname: nickname} ->
         broadcast(socket, "shout", %{
           text: text,
-          user: nickname,
+          nickname: nickname,
           timestamp: :os.system_time(:millisecond)
         })
 

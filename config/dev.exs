@@ -10,6 +10,11 @@ config :meta_8th, Meta8th.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+config :meta_8th, Meta8th.Redix,
+  host: "tdesu-srv.lan",
+  port: 6389,
+  database: 0
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -67,7 +72,16 @@ config :meta_8th, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 # config :logger, :console, format: "[$level] $message\n"
-config :logger, :console, format: {LogfmtEx, :format}
+# config :logger, :console, format: {LogfmtEx, :format}
+
+config :logger, :console,
+  format: {LogfmtEx, :format},
+  metadata: [:user_id, :pid, :file, :reason]
+
+config :logfmt_ex, :opts,
+  message_key: "msg",
+  timestamp_key: "ts",
+  timestamp_format: :iso8601
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.

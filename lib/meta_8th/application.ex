@@ -10,6 +10,7 @@ defmodule Meta8th.Application do
     children = [
       Meta8thWeb.Telemetry,
       Meta8th.Repo,
+      Meta8th.Redix,
       {DNSCluster, query: Application.get_env(:meta_8th, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Meta8th.PubSub},
       # Start the Finch HTTP client for sending emails

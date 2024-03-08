@@ -12,8 +12,19 @@ const initChat = (chatChannel) => {
     const messageInput = chatRoot.querySelector(".message-input")
     const sendButton = chatRoot.querySelector(".send-message")
 
+    const history = chatRoot.querySelector(".history")
     chatChannel.on("shout", resp => {
-        console.info("чят", resp)
+        const line = document.createElement("p")
+
+        const messageDateTime =
+            new Date(resp.timestamp)
+                .toLocaleString()
+        const formattedMessage =
+            document
+                .createTextNode(`[${messageDateTime}] ${resp.nickname}: ${resp.text}`)
+        line.appendChild(formattedMessage)
+
+        history.append(line)
     })
 
     sendButton.addEventListener("click", () => {

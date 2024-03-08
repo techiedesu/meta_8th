@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "mix_task",
+            "name": "mix (Default task)",
+            "request": "launch",
+            "task": "phx.server",
+            "projectDir": "${workspaceRoot}",
+            "taskArgs": [
+                "--no-halt"
+            ],
+            "exitAfterTaskReturns": false
+        }
+    ]
+}
