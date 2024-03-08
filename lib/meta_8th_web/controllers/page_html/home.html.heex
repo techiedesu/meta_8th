@@ -1,0 +1,39 @@
+<.flash_group flash={@flash} />
+<div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
+  <div class="grid grid-cols-2 gap-2">
+    <div style="display: none">
+      <iframe
+        src="https://www.youtube.com/embed/f8oqLEaUblQ"
+        title="Как Microsoft получила судьбоносный контракт. Прошлое тщательно скрывают. (полная версия)"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      >
+      </iframe>
+    </div>
+
+    <div>
+      <div class="chat-root">
+        <div class="history"></div>
+
+        <div class="grid grid-cols-5">
+          <div class="col-span-5">
+            <textarea class="message-input" name="Text1" placeholder="вставьте текст"></textarea>
+          </div>
+          <div class="col-span-3">
+            <input type="checkbox" id="send-by-ctrl-enter" />
+            <label for="send-by-ctrl-enter">отправка по ctrl + enter</label>
+          </div>
+          <div class="col-span-2">
+            <button
+              class="send-message"
+              class="bg-green-600 hover:bg-blue-500 text-white font-normal py-2 px-4 rounded"
+            >
+              отправить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
